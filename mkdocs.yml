@@ -1,7 +1,7 @@
-site_name: Veronica K
-site_author: Veronica K
+site_name: mbbs-aiims
+site_author: mbbs-aiims
 site_description: >-
-  Veronica K
+  mbbs-aiims
 theme:
   name: material
   custom_dir: material
