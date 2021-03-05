@@ -1,0 +1,43 @@
+name: Github Pages with MKDocs
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+jobs:
+  checkout:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+        with:
+          repository: "kveronica/Anatomy"
+          ref: "main"
+          token: ${{ secrets.ACCESS_TOKEN }}
+          path: "sub/Anatomy"
+          fetch-depth: "1"
+      - uses: actions/checkout@v2
+        with:
+          repository: "kveronica/Biochemistry"
+          ref: "main"
+          token: ${{ secrets.ACCESS_TOKEN }}
+          path: "sub/Biochemistry"
+          fetch-depth: "1"
+      - uses: actions/checkout@v2
+        with:
+          repository: "kveronica/Physiology"
+          ref: "main"
+          token: ${{ secrets.ACCESS_TOKEN }}
+          path: "sub/Physiology"
+          fetch-depth: "1"
+      - run: |
+          mv sub/Physiology/docs docs/Physiology
+          mv sub/Biochemistry/docs docs/Biochemistry
+          mv sub/Anatomy/docs docs/Anatomy
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - run: |
+          pip install -r requirements.txt
+          mkdocs gh-deploy --force --verbose
