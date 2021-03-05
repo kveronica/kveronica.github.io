@@ -12,21 +12,21 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/checkout@v2
         with:
-          repository: "kveronica/Anatomy"
+          repository: "mbbs-aiims/Anatomy"
           ref: "main"
           token: ${{ secrets.ACCESS_TOKEN }}
           path: "sub/Anatomy"
           fetch-depth: "1"
       - uses: actions/checkout@v2
         with:
-          repository: "kveronica/Biochemistry"
+          repository: "mbbs-aiims/Biochemistry"
           ref: "main"
           token: ${{ secrets.ACCESS_TOKEN }}
           path: "sub/Biochemistry"
           fetch-depth: "1"
       - uses: actions/checkout@v2
         with:
-          repository: "kveronica/Physiology"
+          repository: "mbbs-aiims/Physiology"
           ref: "main"
           token: ${{ secrets.ACCESS_TOKEN }}
           path: "sub/Physiology"
